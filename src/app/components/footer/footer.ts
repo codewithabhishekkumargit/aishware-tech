@@ -2,6 +2,7 @@ import { Component, signal, inject, AfterViewInit, ViewChild, ElementRef, HostLi
 import { NgFor } from '@angular/common'
 import gsap from 'gsap'
 import { SERVICES, PROJECTS } from '../../data'
+import { ScrollService } from '../../services/scroll.service'
 
 @Component({
   selector: 'app-footer',
@@ -11,6 +12,11 @@ import { SERVICES, PROJECTS } from '../../data'
 })
 export class Footer implements AfterViewInit {
   private readonly el = inject(ElementRef)
+  private readonly scroll = inject(ScrollService)
+
+  scrollTo(section: string) {
+    this.scroll.scrollTo(section)
+  }
 
   @ViewChild('footerContainer') footerContainer!: ElementRef<HTMLElement>
 

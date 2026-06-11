@@ -1,40 +1,54 @@
 <section class="relative overflow-hidden py-32 md:py-40">
-  <div class="container mx-auto px-6">
-    <h2 class="text-4xl md:text-5xl font-bold text-center mb-8 font-heading">Technology Stack</h2>
-    <p class="text-lg text-center text-gray-400 mb-16 max-w-2xl mx-auto">
-      Modern technologies powering next-generation solutions
-    </p>
+  <div class="absolute inset-0">
+    <div class="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-purple-500/5 rounded-full blur-3xl"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/3 rounded-full blur-3xl"></div>
+  </div>
 
-    <div class="orbit-scene relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 mx-auto">
-      <div class="absolute inset-0 flex items-center justify-center z-10">
-        <div class="text-center">
-          <p class="text-sm md:text-base font-semibold text-white/80">Aishware Tech</p>
-          <p class="text-xs md:text-sm text-white/50">Solutions</p>
-        </div>
-      </div>
+  <div class="container mx-auto px-6 relative">
+    <div class="text-center mb-16 md:mb-20">
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 font-heading">
+        <span class="text-gradient">Technology Stack</span>
+      </h2>
+      <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
+        Modern technologies powering next-generation solutions
+      </p>
+    </div>
 
-      <div class="absolute inset-0" style="animation: orbit-spin 30s linear infinite">
-        @for (tech of technologies; track tech.name; let i = $index, n = $count) {
-          <div class="absolute top-1/2 left-1/2"
-               [style.transform]="'translate(-50%, -50%) rotate(' + (i * 360 / n) + 'deg) translateY(-' + orbitRadius + 'px)'">
-            <span class="inline-block px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap bg-white/10 text-white/90 backdrop-blur-sm border border-white/10"
-                  [style.--offset]="(-i * 360 / n) + 'deg'"
-                  style="animation: orbit-counter-spin 30s linear infinite">
-              {{ tech.name }}
-            </span>
+    <div class="max-w-5xl mx-auto space-y-10 md:space-y-14">
+      @for (cat of categories; track cat.name) {
+        <div class="group">
+          <div class="flex items-center gap-3 mb-5 md:mb-6">
+            <div class="w-2.5 h-2.5 rounded-full flex-shrink-0"
+                 [style.background]="cat.color"
+                 [style.boxShadow]="'0 0 10px ' + cat.color + '60'">
+            </div>
+            <h3 class="text-base md:text-lg font-semibold tracking-wide"
+                [style.color]="cat.color">
+              {{ cat.name }}
+            </h3>
+            <div class="h-px flex-1"
+                 [style.background]="'linear-gradient(to right, ' + cat.color + '30, transparent)'">
+            </div>
+            <span class="text-xs text-white/30 font-mono">{{ cat.items.length }}</span>
           </div>
-        }
-      </div>
+
+          <div class="flex flex-wrap gap-3 md:gap-4">
+            @for (tech of cat.items; track tech) {
+              <span class="tech-chip inline-flex items-center gap-2.5 px-4 py-2.5 md:px-5 md:py-3 rounded-xl text-sm md:text-base font-medium backdrop-blur-sm border transition-all duration-300 hover:scale-105 hover:brightness-110"
+                    [style.background]="cat.color + '0d'"
+                    [style.borderColor]="cat.color + '20'"
+                    [style.color]="cat.color">
+                <span class="w-1.5 h-1.5 rounded-full"
+                      [style.background]="cat.color"
+                      [style.boxShadow]="'0 0 6px ' + cat.color + '80'">
+                </span>
+                {{ tech }}
+              </span>
+            }
+          </div>
+        </div>
+      }
     </div>
   </div>
 </section>
-
-<style>
-  @keyframes orbit-spin {
-    to { transform: rotate(360deg); }
-  }
-  @keyframes orbit-counter-spin {
-    from { transform: rotate(360deg + var(--offset, 0deg)); }
-    to { transform: rotate(0deg + var(--offset, 0deg)); }
-  }
-</style>

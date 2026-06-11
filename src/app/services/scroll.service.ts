@@ -45,14 +45,13 @@ export class ScrollService {
   scrollTo(target: string | HTMLElement): void {
     if (!this.isBrowser) return
 
-    const el = typeof target === 'string' ? document.getElementById(target) : target
-    if (!el) return
-
-    const top = el.getBoundingClientRect().top + window.scrollY - 80
-
     if (this.lenis) {
-      this.lenis.scrollTo(top, { duration: 1.2 })
+      const q = typeof target === 'string' ? '#' + target : target
+      this.lenis.scrollTo(q, { offset: -80, duration: 1.2 })
     } else {
+      const el = typeof target === 'string' ? document.getElementById(target) : target
+      if (!el) return
+      const top = el.getBoundingClientRect().top + window.scrollY - 80
       window.scrollTo({ top, behavior: 'smooth' })
     }
   }
