@@ -21,6 +21,9 @@ export class ScrollService {
 
     gsap.registerPlugin(ScrollTrigger)
 
+    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0
+    if (isTouch) return
+
     this.ngZone.runOutsideAngular(() => {
       this.lenis = new Lenis({
         duration: 1.2,
