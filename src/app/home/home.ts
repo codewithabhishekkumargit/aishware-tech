@@ -38,22 +38,30 @@ import { ScrollProgress } from '../components/scroll-progress/scroll-progress'
     <app-nav />
     <main>
       <section id="hero"><app-hero /></section>
-      <app-trust />
-      <app-metrics />
-      <section id="services"><app-services /></section>
-      <section id="about"><app-about /></section>
-      <app-why-us />
-      <section id="projects"><app-projects /></section>
-      <app-tech-stack />
-      <app-process />
-      <app-team />
-      <app-testimonials />
-      <app-industries />
-      <app-faq />
-      <section id="contact"><app-contact /></section>
-      <app-cta />
+      @defer (on viewport) { <app-trust /> } @placeholder { <div class="h-32"></div> }
+      @defer (on viewport) { <app-metrics /> } @placeholder { <div class="h-24"></div> }
+      @defer (on viewport) {
+        <section id="services"><app-services /></section>
+      } @placeholder { <div class="h-16"></div> }
+      @defer (on viewport) {
+        <section id="about"><app-about /></section>
+      } @placeholder { <div class="h-16"></div> }
+      @defer (on viewport) { <app-why-us /> } @placeholder { <div class="h-16"></div> }
+      @defer (on viewport) {
+        <section id="projects"><app-projects /></section>
+      } @placeholder { <div class="h-16"></div> }
+      @defer (on viewport) { <app-tech-stack /> } @placeholder { <div class="h-16"></div> }
+      @defer (on viewport) { <app-process /> } @placeholder { <div class="h-16"></div> }
+      @defer (on viewport) { <app-team /> } @placeholder { <div class="h-16"></div> }
+      @defer (on viewport) { <app-testimonials /> } @placeholder { <div class="h-16"></div> }
+      @defer (on viewport) { <app-industries /> } @placeholder { <div class="h-16"></div> }
+      @defer (on viewport) { <app-faq /> } @placeholder { <div class="h-16"></div> }
+      @defer (on viewport) {
+        <section id="contact"><app-contact /></section>
+      } @placeholder { <div class="h-16"></div> }
+      @defer (on viewport) { <app-cta /> } @placeholder { <div class="h-16"></div> }
     </main>
-    <app-footer />
+    @defer (on viewport) { <app-footer /> } @placeholder { <div class="h-16"></div> }
   `,
 })
 export class HomePage implements OnInit {
