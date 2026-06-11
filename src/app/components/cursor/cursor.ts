@@ -23,6 +23,7 @@ export class Cursor implements AfterViewInit {
 
   @HostListener('window:mousemove', ['$event'])
   onMouseMove(e: MouseEvent): void {
+    if (!this.dot?.nativeElement || !this.ring?.nativeElement) return
     this.isVisible.set(true)
     gsap.to(this.dot.nativeElement, { x: e.clientX, y: e.clientY, duration: 0.1, ease: 'power2.out' })
     gsap.to(this.ring.nativeElement, { x: e.clientX, y: e.clientY, duration: 0.35, ease: 'power3.out' })
@@ -52,11 +53,13 @@ export class Cursor implements AfterViewInit {
 
   @HostListener('window:mousedown')
   onMouseDown(): void {
+    if (!this.ring?.nativeElement) return
     gsap.to(this.ring.nativeElement, { scale: 0.75, duration: 0.15, ease: 'power2.out' })
   }
 
   @HostListener('window:mouseup')
   onMouseUp(): void {
+    if (!this.ring?.nativeElement) return
     gsap.to(this.ring.nativeElement, { scale: 1, duration: 0.15, ease: 'power2.out' })
   }
 }
