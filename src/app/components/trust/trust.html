@@ -1,0 +1,25 @@
+<section class="relative py-32 md:py-40 bg-[#0a0a0f] overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="mb-20 overflow-hidden">
+      <div class="flex marquee-track gap-16" style="width: fit-content;">
+        @for (client of clients; track client) {
+          <span class="text-white/20 text-2xl font-bold tracking-widest uppercase whitespace-nowrap">{{ client }}</span>
+        }
+        @for (client of clients; track client + '-dup') {
+          <span class="text-white/20 text-2xl font-bold tracking-widest uppercase whitespace-nowrap">{{ client }}</span>
+        }
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-16">
+      @for (metric of metrics; track metric.label) {
+        <div class="metric-counter text-center" [attr.data-target]="metric.value" [attr.data-suffix]="metric.suffix || ''">
+          <div class="counter-value text-5xl md:text-6xl font-bold bg-gradient-to-br from-white to-white/40 bg-clip-text text-transparent mb-2">
+            0
+          </div>
+          <div class="text-white/40 text-sm md:text-base font-medium tracking-wide">{{ metric.label }}</div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

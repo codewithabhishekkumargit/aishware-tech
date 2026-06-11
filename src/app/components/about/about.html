@@ -1,0 +1,54 @@
+<section class="relative overflow-hidden py-32 md:py-40">
+  <div class="container mx-auto px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+      <div #textCol>
+        <span class="inline-block text-accent-1 font-semibold text-sm uppercase tracking-[0.2em] mb-4">About Us</span>
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-8 reveal-item">
+          We Build Software That Powers Business Growth
+        </h2>
+        <p class="text-gray-400 text-lg leading-relaxed mb-8 reveal-item">
+          Aishware Tech Solutions is a Bangalore-based enterprise software development company specializing in AI automation, cloud-native architecture, and full-stack web development. We partner with startups, growing businesses, and enterprises to design and build custom digital products that solve real-world problems.
+        </p>
+        <p class="text-gray-500 leading-relaxed mb-10 reveal-item">
+          Our team of senior engineers, AI specialists, and UX designers brings deep expertise across Angular, React, Node.js, Python, AWS, Azure, OpenAI, and modern DevOps practices. From MVP development for early-stage startups to large-scale platform engineering for established enterprises, every project we deliver is built for performance, scalability, and long-term maintainability. We believe in transparent collaboration, agile delivery, and technology choices that serve your business goals — not the other way around.
+        </p>
+
+        <div #statsRow class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
+          @for (stat of stats; track stat.label) {
+            <div class="stat-card text-center p-4 rounded-xl bg-white/5 border border-white/10">
+              <div class="text-2xl md:text-3xl font-bold text-accent-1 mb-1">{{ stat.value }}</div>
+              <div class="text-xs text-gray-500 uppercase tracking-wider">{{ stat.label }}</div>
+            </div>
+          }
+        </div>
+
+        <div class="flex flex-wrap gap-3 reveal-item">
+          @for (signal of trustSignals; track signal) {
+            <span class="px-4 py-2 rounded-full text-sm text-gray-300 bg-white/5 border border-white/10">
+              {{ signal }}
+            </span>
+          }
+        </div>
+
+        <button
+          class="mt-10 inline-flex items-center gap-2 px-8 py-4 rounded-full bg-accent-gradient text-white font-semibold text-sm cursor-pointer transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_32px_rgba(99,102,241,.4)]"
+          (click)="scrollTo('contact')"
+        >
+          Get in Touch
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </button>
+      </div>
+
+      <div #visualCol class="relative">
+        <div #shapesContainer class="relative w-full aspect-square max-w-lg mx-auto">
+          <div class="shape absolute top-0 left-0 w-48 h-48 rounded-3xl bg-gradient-to-br from-accent-1/20 to-accent-2/10 border border-accent-1/20 backdrop-blur-sm"></div>
+          <div class="shape absolute bottom-0 right-0 w-56 h-56 rounded-[40px] bg-gradient-to-tl from-accent-2/20 to-accent-3/10 border border-accent-2/20 backdrop-blur-sm"></div>
+          <div class="shape absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full bg-gradient-to-br from-accent-3/20 to-accent-1/10 border border-accent-3/20 backdrop-blur-sm"></div>
+          <div class="shape absolute top-1/4 right-1/4 w-24 h-24 rounded-2xl bg-gradient-to-br from-accent-1/20 to-accent-2/10 border border-accent-1/20 backdrop-blur-sm"></div>
+          <div class="shape absolute bottom-1/4 left-1/4 w-20 h-20 rounded-full bg-gradient-to-br from-accent-2/20 to-accent-3/10 border border-accent-2/20 backdrop-blur-sm"></div>
+          <div class="shape absolute inset-0 bg-gradient-to-br from-accent-1/5 via-transparent to-accent-2/5 rounded-full blur-3xl"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

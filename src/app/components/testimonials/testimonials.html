@@ -1,0 +1,57 @@
+<section class="relative overflow-hidden py-32 md:py-40">
+  <div class="container mx-auto px-6">
+    <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 font-heading">What Our Clients Say</h2>
+    <p class="text-lg text-center text-gray-400 mb-16 max-w-2xl mx-auto">
+      Trusted by businesses to deliver exceptional results
+    </p>
+
+    <div class="relative max-w-2xl mx-auto min-h-[320px]">
+      @for (testimonial of testimonials; track testimonial.name; let i = $index) {
+        <div class="absolute inset-0 transition-all duration-500 ease-in-out"
+             [class.opacity-0]="i !== currentIndex"
+             [class.opacity-100]="i === currentIndex"
+             [class.pointer-events-none]="i !== currentIndex"
+             [class.pointer-events-auto]="i === currentIndex">
+          <div class="glass rounded-2xl p-8 md:p-10">
+            <div class="flex gap-1 mb-6">
+              @for (star of starArray; track star) {
+                <svg class="w-5 h-5"
+                     [class.text-yellow-400]="star <= testimonial.rating"
+                     [class.text-gray-600]="star > testimonial.rating"
+                     viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                </svg>
+              }
+            </div>
+
+            <p class="text-gray-300 text-lg leading-relaxed mb-8 italic">
+              "{{ testimonial.content }}"
+            </p>
+
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full flex items-center justify-center text-white font-semibold text-sm flex-shrink-0 bg-accent-gradient">
+                {{ getInitials(testimonial.name) }}
+              </div>
+              <div>
+                <p class="font-semibold">{{ testimonial.name }}</p>
+                <p class="text-sm text-gray-400">{{ testimonial.role }}, {{ testimonial.company }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="flex justify-center gap-2 mt-8">
+      @for (testimonial of testimonials; track testimonial.name; let i = $index) {
+        <button (click)="setCurrent(i)"
+                class="w-2.5 h-2.5 rounded-full transition-all duration-300"
+                [class.bg-accent-1]="i === currentIndex"
+                [class.w-8]="i === currentIndex"
+                [class.bg-white/20]="i !== currentIndex"
+                [attr.aria-label]="'Go to testimonial ' + (i + 1)">
+        </button>
+      }
+    </div>
+  </div>
+</section>

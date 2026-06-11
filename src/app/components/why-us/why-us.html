@@ -1,0 +1,37 @@
+<section class="relative overflow-hidden py-32 md:py-40">
+  <div class="container mx-auto px-6">
+    <div #heading class="text-center mb-20">
+      <span class="inline-block text-accent-1 font-semibold text-sm uppercase tracking-[0.2em] mb-4">Why Aishware Tech</span>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white">
+        What Makes Us <span class="text-gradient">Different</span>
+      </h2>
+      <p class="text-gray-400 text-lg max-w-3xl mx-auto mt-6">
+        We combine deep technical expertise with a relentless focus on quality and client success. 
+        Every project is an opportunity to deliver excellence — here's what sets our approach apart 
+        from traditional software development agencies.
+      </p>
+    </div>
+
+    <div class="relative">
+      <div #timeline class="absolute left-0 top-0 w-px bg-gradient-to-b from-accent-1/50 via-accent-3/50 to-accent-2/50 hidden 2xl:block"></div>
+
+      <div #cardsContainer class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        @for (item of items; track item.title; let i = $index) {
+          <div class="why-card group relative p-6 rounded-2xl glass glass-hover transition-all duration-500" style="opacity:0;transform:translateY(50px)">
+            <div class="flex items-start gap-4">
+              <div class="shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-accent-1/20 to-accent-3/10 border border-accent-1/20 flex items-center justify-center">
+                <svg class="w-5 h-5 text-accent-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" [attr.d]="icons[i]" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-white font-semibold text-lg mb-2 group-hover:text-accent-1 transition-colors">{{ item.title }}</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">{{ item.description }}</p>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>

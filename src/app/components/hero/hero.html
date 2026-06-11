@@ -1,0 +1,42 @@
+<section class="hero-section relative min-h-screen w-full overflow-hidden bg-[#0a0a0f] flex flex-col" style="min-height: 100vh; min-height: 100dvh;">
+  <div class="aurora-blob aurora-1 parallax-layer"></div>
+  <div class="aurora-blob aurora-2 parallax-layer"></div>
+  <div class="aurora-blob aurora-3 parallax-layer"></div>
+  <div class="aurora-blob aurora-4 parallax-layer"></div>
+
+  <div class="absolute inset-0 pointer-events-none z-[1]" style="background-image: linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px); background-size: 60px 60px;"></div>
+
+  <div class="mouse-glow absolute inset-0 pointer-events-none z-[2]"></div>
+
+  <div #particlesContainer class="absolute inset-0 z-[3] pointer-events-none"></div>
+
+  <div class="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-6">
+    <h1 class="max-w-5xl mx-auto font-bold text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-tight text-white mb-6 overflow-hidden">
+      @for (word of words; track word; let i = $index) {
+        <span class="word" style="--word-index: {{ i }}">
+          {{ word }}@if (i < words.length - 1) {&nbsp;}
+        </span>
+      }
+    </h1>
+
+      <p class="subheadline max-w-2xl mx-auto text-lg sm:text-xl text-white/60 mb-12 leading-relaxed">
+        Aishware Tech Solutions delivers enterprise-grade software — AI-powered platforms, cloud-native applications, custom CRM and ERP systems, and scalable web solutions that help businesses grow faster and operate smarter.
+      </p>
+
+    <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
+      <button magnetic class="cta-btn inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-cyan-500 text-white font-semibold text-sm cursor-pointer overflow-hidden transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_32px_rgba(99,102,241,.4)]" [magneticStrength]="0.3" (click)="scrollTo('contact')">
+        Start Your Project
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </button>
+      <button magnetic class="cta-btn inline-flex items-center gap-2 px-8 py-4 rounded-full bg-transparent text-white/90 font-semibold text-sm cursor-pointer border border-white/20 transition-all duration-300 hover:bg-white/5 hover:border-white/40" [magneticStrength]="0.3" (click)="scrollTo('projects')">
+        View Our Work
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>

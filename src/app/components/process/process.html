@@ -1,0 +1,27 @@
+<section class="relative overflow-hidden py-32 md:py-40 process-section">
+  <div class="container mx-auto px-6">
+    <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 font-heading">Our Development Process</h2>
+    <p class="text-lg text-center text-gray-400 mb-16 max-w-2xl mx-auto">
+      A structured approach delivering exceptional results at every stage
+    </p>
+
+    <div class="process-timeline relative max-w-3xl mx-auto">
+      <div class="absolute left-6 sm:left-8 top-0 bottom-0 w-px bg-white/10"></div>
+      <div class="process-line-fill absolute left-6 sm:left-8 top-0 w-px bg-accent-1 origin-top" style="scaleY: 0; height: 100%; box-shadow: 0 0 8px rgba(59,130,246,0.5);"></div>
+
+      @for (step of steps; track step.number; let i = $index) {
+        <div class="process-step relative pl-14 sm:pl-20 pb-12 last:pb-0">
+          <div class="absolute left-[calc(1.5rem-5px)] sm:left-[calc(2rem-5px)] top-0 w-2.5 h-2.5 rounded-full bg-accent-1 ring-4 ring-primary"></div>
+
+          <div class="glass glass-hover p-6 md:p-8 rounded-xl transition-all duration-300">
+            <span class="text-5xl md:text-6xl font-bold text-accent-1/15 font-heading block leading-none mb-3">
+              {{ step.number }}
+            </span>
+            <h3 class="text-xl md:text-2xl font-semibold mb-3">{{ step.title }}</h3>
+            <p class="text-gray-400 leading-relaxed">{{ step.description }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

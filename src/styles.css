@@ -1,0 +1,99 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-primary: #0F172A;
+  --color-primary-light: #111827;
+  --color-accent-1: #3B82F6;
+  --color-accent-2: #06B6D4;
+  --color-accent-3: #8B5CF6;
+  --color-accent-gradient: linear-gradient(135deg, #3B82F6, #8B5CF6, #06B6D4);
+
+  --font-heading: 'Inter Tight', 'Inter', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-metrics: 'Space Grotesk', monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    @apply font-body bg-primary text-white;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(59, 130, 246, 0.3);
+    color: white;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0F172A;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #3B82F6;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2563EB;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, #3B82F6, #8B5CF6, #06B6D4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-accent-gradient {
+    background: linear-gradient(135deg, #3B82F6, #8B5CF6, #06B6D4);
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .glass-hover:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .glow-border {
+    position: relative;
+  }
+
+  .glow-border::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, #3B82F6, #8B5CF6, #06B6D4);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .glow-border:hover::before {
+    opacity: 1;
+  }
+
+  .mask-reveal {
+    clip-path: inset(0 0 100% 0);
+  }
+
+  .text-outline {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+    -webkit-text-fill-color: transparent;
+  }
+}
